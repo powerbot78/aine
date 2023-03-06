@@ -1,15 +1,20 @@
 let fs = require('fs') 
 let chalk = require('chalk')
 
-global.owner = [
-  ['18312576749'],
+global.owner = 
+ [
+  ['6283811034750', 'Rezdev'],
   ['6283811034750'],
-  ['18312576749', 'Owner', true]
+  ['6283811034750']
+]
+
+owner = [
+  ['6283811034750', 'Rezdev', true]
   // [number, dia creator/owner?, dia developer?]
 ] // Put your number here
-global.mods = [] // Want some help?
-global.prems = [] // Premium user has unlimited limit
-global.APIs = { // API Prefix
+mods = [] // Want some help?
+prems = [] // Premium user has unlimited limit
+APIs = { // API Prefix
   // name: 'https://website'
   nrtm: 'https://nurutomo.herokuapp.com',
   xteam: 'https://api.xteam.xyz',
@@ -23,7 +28,7 @@ global.APIs = { // API Prefix
   LeysCoder: 'https://leyscoders-api.herokuapp.com',
   restapi: 'https://x-restapi.herokuapp.com'
 }
-global.APIKeys = { // APIKey Here
+APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
   'https://api.xteam.xyz': 'apikeyaine',
   'https://zahirr-web.herokuapp.com': 'zahirgans',
@@ -40,8 +45,8 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
 const spack = fs.readFileSync("lib/exif.json")
 const stickerpack = JSON.parse(spack)
 if (stickerpack.spackname == '') {
-  var sticker_name = '@Whatsapp_bot'
-  var sticker_author = 'Fahri'
+  var sticker_name = 'Rezdev.'
+  var sticker_author = 'Rezdev'
 } else {
   var sticker_name = stickerpack.spackname
   var sticker_author = stickerpack.sauthor
@@ -56,13 +61,29 @@ fs.watchFile(file_exif, () => {
 })
 
 // Sticker WM
-global.packname = sticker_name
-global.author = sticker_author
-global.wm = '@WhatsApp_Bot'
+packname = sticker_name
+author = sticker_author
+wm = '© Rimu >~<'
+global.ownernya = ["6283811034750","6283811034750"]
+global.colong1 = 'Rezdev.'
+global.wm2 = 'Rezdev.'
+global.colong2 = 'Rezdev.︎'
+global.htki = '––––––『' //hiasan title kiri
 
-global.multiplier = 1000 // The higher, The harder levelup
+global.benar = '_*Benar*_✅'
 
-global.rpg = {
+global.salah = '_*Salah*_❌'
+
+global.dikit = "dikit lagi"
+global.htka = '』––––––' //hiasan title kanan
+global.wait = '*_Sabar Siss_*.....'
+global.cmenut = '❏––––––『'                       //top
+global.cmenuh = '』––––––'                        //header
+global.cmenub = '┊❀'
+
+multiplier = 1000 // The higher, The harder levelup
+
+rpg = {
   emoticon(string) {
     string = string.toLowerCase()
     let emot = {

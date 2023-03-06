@@ -50,6 +50,31 @@ module.exports = {
                     if (!isNumber(user.level)) user.level = 0
                     if (!('role' in user)) user.role = 'Beginner'
                     if (!('autolevelup' in user)) user.autolevelup = true
+                    
+                    if (!isNumber(user.title)) user.title = 0
+                    if (!isNumber(user.stamina)) user.stamina = 100
+                    if (!isNumber(user.haus)) user.haus = 100
+                    if (!isNumber(user.laper)) user.laper = 100
+                    if (!isNumber(user.level)) user.level = 0
+                    if (!isNumber(user.pc)) user.pc = 0
+                    if (!isNumber(user.korbanngocok)) user.korbanngocok = 0
+                    if (!isNumber(user.ojekk)) user.ojekk = 0
+                    if (!isNumber(user.trofi)) user.trofi= 0
+                    if (!user.rtrofi) user.rtrofi = 'Perunggu'
+                    if (!isNumber(user.troopcamp)) user.troopcamp = 0
+                    if (!isNumber(user.coin)) user.coin = 0
+                    if (!isNumber(user.atm)) user.atm = 0
+                    if (!isNumber(user.limit)) user.limit = 20
+                    if (!isNumber(user.glimit)) user.glimit = 20
+                    if (!isNumber(user.tprem)) user.tprem = 0
+                    if (!isNumber(user.tigame)) user.tigame = 50
+                    if (!isNumber(user.lastclaim)) user.lastclaim = 0
+                    if (!isNumber(user.money)) user.money = 0
+                    if (!isNumber(user.rumahsakit)) user.rumahsakit= 0
+                    if (!isNumber(user.fortress)) user.fortress = 0
+                    if (!isNumber(user.shield)) user.shield = false
+                    if (!isNumber(user.pertanian)) user.pertanian = 0
+                    if (!isNumber(user.pertambangan)) user.pertambangan = 0
 
                     if (!isNumber(user.health)) user.health = 100
                     if (!isNumber(user.healtmonster)) user.healtmonster = 100
@@ -66,6 +91,46 @@ module.exports = {
                     if (!isNumber(user.rock)) user.rock = 0
                     if (!isNumber(user.string)) user.string = 0
                     if (!isNumber(user.petFood)) user.petFood = 0
+                    
+                    //penambah stamina
+            if (!isNumber(user.apel)) user.apel = 0
+            if (!isNumber(user.ayamb)) user.ayamb = 0
+            if (!isNumber(user.ayamg)) user.ayamg = 0
+            if (!isNumber(user.sapir)) user.sapir = 0
+            if (!isNumber(user.ssapi)) user.ssapi = 0
+            if (!isNumber(user.esteh)) user.esteh = 0
+            if (!isNumber(user.leleg)) user.leleg = 0
+            if (!isNumber(user.leleb)) user.leleb = 0
+                    
+                    //mancing
+			if (!isNumber(user.paus)) user.paus = 0
+     if (!isNumber(user.kepiting)) user.kepiting = 0
+     if (!isNumber(user.gurita)) user.gurita = 0
+     if (!isNumber(user.cumi)) user.cumi= 0
+     if (!isNumber(user.buntal)) user.buntal = 0
+     if (!isNumber(user.dory)) user.dory = 0
+     if (!isNumber(user.lumba)) user.lumba = 0
+     if (!isNumber(user.lobster)) user.lobster = 0
+     if (!isNumber(user.hiu)) user.hiu = 0
+     if (!isNumber(user.udang)) user.udang = 0
+     if (!isNumber(user.ikan)) user.ikan = 0
+     if (!isNumber(user.nila)) user.nila = 0
+     if (!isNumber(user.bawal)) user.bawal = 0
+     if (!isNumber(user.lele)) user.lele = 0
+     if (!isNumber(user.orca)) user.orca = 0
+        
+     if (!isNumber(user.banteng)) user.banteng = 0
+     if (!isNumber(user.harimau)) user.harimau = 0
+     if (!isNumber(user.gajah)) user.gajah = 0
+     if (!isNumber(user.kambing)) user.kambing = 0
+     if (!isNumber(user.panda)) user.panda = 0
+     if (!isNumber(user.buaya)) user.buaya = 0
+     if (!isNumber(user.kerbau)) user.kerbau = 0
+     if (!isNumber(user.sapi)) user.sapi = 0
+     if (!isNumber(user.monyet)) user.monyet = 0
+     if (!isNumber(user.babihutan)) user.babihutan = 0
+     if (!isNumber(user.babi)) user.babi = 0
+     if (!isNumber(user.ayam)) user.ayam = 0
 
                     if (!isNumber(user.emerald)) user.emerald = 0
                     if (!isNumber(user.diamond)) user.diamond = 0
