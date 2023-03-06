@@ -6,15 +6,6 @@ let handler = async (m, { conn }) => {
     let timers = clockString(_timers) 
 let name = m.fromMe ? conn.user : conn.contacts[m.sender]
     let user = global.db.data.users[m.sender]
-    let buttons = [
-{buttonId: '.inv', buttonText: {displayText: 'Inventory'}, type: 1}, 
-]
-const buttonMessage = {
-    contentText: `\nSepertinya Anda Sudah Kecapekan Silahkan Istirahat Dulu sekitar\n🕔 *${timers}*`,
-    footerText: wm, 
-    buttons: buttons,
-    headerType: 1
-}
     if (new Date - global.db.data.users[m.sender].lastngojek > 300000) {
 let randomaku1 = `${Math.floor(Math.random() * 10)}`
 let randomaku2 = `${Math.floor(Math.random() * 10)}`
@@ -86,10 +77,9 @@ hsl = `
 
 ➕  📥Total Order Sebelumnya : ${order}
 
-${global.wm}
+${wm}
 `
-
-
+
 global.db.data.users[m.sender].money += rbrb4
 global.db.data.users[m.sender].exp += rbrb5
 global.db.data.users[m.sender].ojekk += 1
@@ -119,7 +109,7 @@ setTimeout(() => {
                      m.reply('🔍Mencari pelanggan.....')
                      }, 0) 
   user.lastngojek = new Date * 1
-    } else conn.sendMessage(m.chat, buttonMessage, MessageType.buttonsMessage ,m )
+    } else conn.sendButton(m.chat, `📍 Sepertinya Kakak Sudah Kecapekan\nSilahkan Istirahat dulu Untuk melanjutkan ngojek!\n🕖 *${timers}*`, wm, 'Inventory', '.inv',m )
 }
 handler.help = ['ojek']
 handler.tags = ['rpg']
