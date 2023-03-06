@@ -17,7 +17,7 @@ handler.command = /^(tik(tok)?(dl)?)$/i
 module.exports = handler*/
 
 
-const hxz = require("hxz-api")
+/*const hxz = require("hxz-api")
 let handler = async(m, { conn, args, usedPrefix, command }) => {
 if (!args[0]) throw `*Perintah ini untuk mengunduh video tiktok dengan link*\n\ncontoh:\n${usedPrefix + command} https://vm.tiktok.com/ZGJAmhSrp/`
 if (!args[0].match(/tiktok/gi)) throw `*Link salah! Perintah ini untuk mengunduh video tiktok dengan link*\n\ncontoh:\n${usedPrefix + command} https://vm.tiktok.com/ZGJAmhSrp/`
@@ -31,9 +31,9 @@ handler.tags = ['downloader']
 handler.command = /^(tiktok|tiktokdl)$/i
 handler.limit = true
 handler.group = true
-module.exports = handler
+module.exports = handler*/
 
-/*
+
 const { tiktokdl, tiktokdlv2 } = require('@bochilteam/scraper')
 let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!args[0]) throw `*Perintah ini untuk mengunduh video tiktok dengan link*\n\ncontoh:\n${usedPrefix + command} https://vm.tiktok.com/ZGJAmhSrp/`
@@ -51,5 +51,5 @@ handler.tags = ['downloader']
 handler.command = /^(tik|tt|tiktok)$/i
 
 module.exports = handler
-*/
+
 

@@ -1,63 +1,96 @@
-let limit = 30
-let yts = require('yt-search')
-let fetch = require('node-fetch')
-const { servers, yta, ytv } = require('../lib/y2mate')
-let handler = async (m, { conn, command, usedPrefix, text, isPrems, isOwner }) => {
-  if (!text) throw `What song are you want find?\n*Example:* ${usedPrefix}play alan walker faded`
-  let chat = global.db.data.chats[m.chat]
-  let results = await yts(text)
-  let vid = results.all.find(video => video.seconds < 3600)
-  if (!vid) throw 'Video/Audio Not Found'
-  let isVideo = /2$/.test(command)
-  let yt = false
-  let usedServer = servers[0]
-  for (let i in servers) {
-    let server = servers[i]
-    try {
-      yt = await (isVideo ? ytv : yta)(vid.url, server)
-      usedServer = server
-      break
-    } catch (e) {
-      m.reply(`Server ${server} error!${servers.length >= i + 1 ? '' : '\ntry another server...'}`)
-    }
-  }
-  if (yt === false) throw 'All servers can\'t 😕'
-  let { dl_link, thumb, title, filesize, filesizeF } = yt
-  let isLimit = (isPrems || isOwner ? 99 : limit) * 1024 < filesize
-  conn.sendFile(m.chat, thumb, 'thumbnail.jpg', `
-*Title:* ${title}
-*Filesize:* ${filesizeF}
-*Source:* ${vid.url}
-*${isLimit ? 'Pakai ': ''}Link:* ${await shortlink(dl_link)}
-*Server y2mate:* ${usedServer}
+// ---------------------------old------------------------------------------------
 
-_*Please wait while processing..*_
-`.trim(), m)
-let _thumb = {}
-try { if (isVideo) _thumb = { thumbnail: await (await fetch(thumb)).buffer() } }
-catch (e) { }
-if (!isLimit) conn.sendFile(m.chat, dl_link, title + '.mp' + (3 + /2$/.test(command)), `
-*Title:* ${title}
-*Filesize:* ${filesizeF}
-*Source:* ${vid.url}
-*Server y2mate:* ${usedServer}
-`.trim(), m, false,  {
-  ..._thumb,
-  asDocument: chat.useDocument
-})
+/*import { youtubeSearch } from '@bochilteam/scraper'
+let handler = async (m, { conn, command, text, usedPrefix }) => {
+  if (!text) throw `Use example ${usedPrefix}${command} Minecraft`
+  let vid = (await youtubeSearch(text)).video[0]
+  if (!vid) throw 'Video/Audio Tidak ditemukan'
+  let { title, description, thumbnail, videoId, durationH, viewH, publishedTime } = vid
+  const url = 'https://www.youtube.com/watch?v=' + videoId
+  await conn.sendHydrated(m.chat, `
+*${htki} PLAY ${htka}*
+
+${htjava} *Title:* ${title}
+📤 *Published:* ${publishedTime}
+⏰ *Duration:* ${durationH}
+👁️ *Views:* ${viewH}
+
+🔗 *Url:* ${url}
+📔 *Description:* ${description}
+  `.trim(), wm, thumbnail, url, '📣 GO TO YOUTUBE', null, null, [
+    ['🎶 Audio', `${usedPrefix}yta ${url} yes`],
+    ['🎥 Video', `${usedPrefix}ytv ${url} yes`],
+    ['🔎 Youtube Search', `${usedPrefix}yts ${url}`]
+  ], m)
 }
-handler.help = ['play', 'play2'].map(v => v + ' <search>')
-handler.tags = ['downloader']
+handler.help = ['play', 'play2'].map(v => v + ' <pencarian>')
+handler.tags = ['downloader', 'limitmenu']
 handler.command = /^play2?$/i
-handler.premium = false
-handler.group = true
 
 handler.exp = 0
 handler.limit = true
+handler.register = true
 
+export default handler */
+// ---------------------------new------------------------------------------------
+
+let fetch = require('node-fetch')
+const { youtubeSearch } = require('@bochilteam/scraper')
+let handler = async (m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
+try {
+  if (!text) throw `Use example ${usedPrefix}${command} gustixa`
+  let vid = (await youtubeSearch(text)).video[0]
+  await m.reply(`*_${md} @${m.sender.split(`@`)[0]}..._*`)
+  if (!vid) throw 'Video/Audio Tidak ditemukan'
+  let { title, description, thumbnail, videoId, durationH, viewH, publishedTime } = vid
+  const url = 'https://www.youtube.com/watch?v=' + videoId
+  let whmodsdev = `*${htki} PLAY ${htka}*
+
+  📌 *Title:* ${title}
+🔗 *Url:* ${url}
+📔 *Description:* ${description}
+
+⏲️ *Published:* ${publishedTime}
+⌚ *Duration:* ${durationH}
+👁️ *Views:* ${viewH}
+  `
+  await conn.sendButton(m.chat, whmodsdev, wm, botdate, [
+    ['🎶 Audio', `${usedPrefix}yta ${url} yes`],
+    ['🎥 Video', `${usedPrefix}ytv ${url} yes`],
+    ['🔎 Youtube Search', `${usedPrefix}yts ${text}`]
+], m, fdoc)
+} catch {
+if (!text) throw 'Input Query'
+  let vid = (await youtubeSearch(text)).video[0]
+  if (!vid) throw 'Video/Audio Tidak Ditemukan'
+  let { title, description, thumbnail, videoId, durationH, durationS, viewH, publishedTime } = vid
+  let url = 'https://www.youtube.com/watch?v=' + videoId
+  let ytLink = `https://yt-downloader.akkun3704.repl.co/?url=${url}&filter=audioonly&quality=highestaudio&contenttype=audio/mpeg`
+  let capt = `*${htki} PLAY ${htka}*
+
+  📌 *Title:* ${title}
+🔗 *Url:* ${url}
+📔 *Description:* ${description}
+
+⏲️ *Published:* ${publishedTime}
+⌚ *Duration:* ${durationH}
+👁️ *Views:* ${viewH}
+  `
+  let buttons = [{ buttonText: { displayText: '🎶 Audio/Vn' }, buttonId: `${usedPrefix}yta ${url}` }, { buttonText: { displayText: '🎥 Video' }, buttonId: `${usedPrefix}ytv ${url}` }, { buttonText: { displayText: '🔎 Youtube Search' }, buttonId: `${usedPrefix}yts ${text}` }]
+  let msg = await conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: capt, footer: '_Audio on progress..._', buttons }, { quoted: m })
+  // if (durationS > 4000) return conn.sendMessage(m.chat, { text: `*Download:* ${await shortUrl(ytLink)}\n\n_Duration too long..._` }, { quoted: msg })
+  conn.sendMessage(m.chat, { audio: { url: ytLink }, mimetype: 'audio/mpeg' }, { quoted: msg })
+}
+
+}
+handler.help = ['play', 'play3'].map(v => v + ' <pencarian>')
+handler.tags = ['downloader', 'limitmenu']
+handler.command = /^play(ay|y)?$/i
 module.exports = handler
 
-async function shortlink(url) {
-isurl = /https?:\/\//.test(url)
-return isurl ? (await require('axios').get('https://tinyurl.com/api-create.php?url='+encodeURIComponent(url))).data : ''
+async function shortUrl(url) {
+  url = encodeURIComponent(url)
+  let res = await fetch(`https://is.gd/create.php?format=simple&url=${url}`)
+  if (!res.ok) throw false
+  return await res.text()
 }

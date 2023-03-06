@@ -1,4 +1,4 @@
-/*let limit = 50
+let limit = 50
 // const { servers, yta } = require('../lib/y2mate')
 const { youtubedl, youtubedlv2 } = require('@bochilteam/scraper')
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
@@ -39,12 +39,12 @@ handler.command = /^yt(a|mp3)$/i
 
 handler.exp = 0
 
-module.exports = handler*/
+module.exports = handler
 
 
 
 
-let limit = 30
+/*let limit = 30
 const { servers, yta } = require('../lib/y2mate')
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
   if (!args || !args[0]) throw 'Uhm... urlnya mana?'
@@ -85,7 +85,4 @@ module.exports = handler
 async function shortlink(url) {
 isurl = /https?:\/\//.test(url)
 return isurl ? (await require('axios').get('https://tinyurl.com/api-create.php?url='+encodeURIComponent(url))).data : ''
-}
-
-
-
+}*/

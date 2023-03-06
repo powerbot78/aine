@@ -1,6 +1,7 @@
-function handler(m) {
-  const data = global.owner.filter(([id, isCreator]) => id && isCreator)
-  this.sendContact(m.chat, data.map(([id, name]) => [id, name]), m)
+let handler = function (m) {
+  // this.sendContact(m.chat, '6281515860089', 'Nurutomo', m)
+  conn.sendContact(m.chat, '6283811034750', 'Rezdev.', m)
+  
 }
 handler.help = ['owner', 'creator']
 handler.tags = ['info']
